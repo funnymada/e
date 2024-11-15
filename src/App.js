@@ -18,8 +18,8 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<Products />} />
-                    <Route path="/Detail/:id" element={<Detail />} />
-                    <Route path="/Login" element={<Login />} />
+                    {/*<Route path="/Detail/:id" element={<Detail />} />*/}
+                    {/*<Route path="/Login" element={<Login />} />*/}
                 </Routes>
             </div>
         </header>

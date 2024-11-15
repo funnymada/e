@@ -17,7 +17,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            await dispatch(login(credentials))
+            dispatch(login(credentials))
             navigate('/')
         }catch (error) {
             console.log(error);
