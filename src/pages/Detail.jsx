@@ -17,7 +17,7 @@ export function Detail() {
     };
     return (
         <div>
-            <p>prodotto numero{id}</p>
+            <p>prodotto numero: {id}</p>
             <button onClick={() => handleBack()} style={styles.button}>back</button>
         </div>
 

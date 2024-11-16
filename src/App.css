@@ -28,6 +28,20 @@
   margin-bottom: 5px;
 }
 
+.buttonClose{
+  border-style: solid;
+  border-radius: 10%;
+  font-weight: bold;
+  border-color: black;
+  background-color: #eaa000;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.buttonClose:hover{
+  background-color: #a31919;
+}
+
 .cardContainer{
   display: flex;
   flex-direction: column;

@@ -1,1 +1,37 @@
- 
+.inputAddText {
+         margin-left: 5px;
+         appearance: none;
+         border: none;
+         outline: none;
+         border-bottom: .2em solid #dfbb61;
+         background: rgba(69, 52, 10, 0.2);
+         border-radius: .2em .2em 0 0;
+         padding: .4em;
+         color: #000000;
+     }
+.inputAddNumber {
+    margin-left: 10px;
+    place-content: center;
+    width: 3em;
+    padding: 0.5em;
+    border: .2em solid #dfbb61;
+    border-radius: 1em;
+    text-align: center;
+    align-content: center;
+
+    color: #000000;
+    appearance: textfield;
+    &::-webkit-inner-spin-button {
+        opacity: 1;
+        background: #c59e06;
+    }
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+ -webkit-appearance: none;
+ margin: 0;
+}
+.centeredButton{
+    display: flex;
+    justify-content: center;
+}

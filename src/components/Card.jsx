@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import '../App.css';
+import './style.css'
 import {removeItem} from "../redux/itemSlice";
 import {useDispatch} from "react-redux";
 function Card({item}) {
@@ -13,10 +14,10 @@ function Card({item}) {
         <div style={styles.cardContainer} >
             <div onClick={() => handleCardClick(item.id)}>
                 <h2 style={styles.element}>Nome: {item.name}</h2>
-                <p>Prezzo: {item.price} €</p>
-                <p>Brand: {item.brand}</p>
+                <p> Prezzo:   {item.price} €</p>
+                <p> Brand: {item.brand}</p>
             </div>
-           <button className={'button1'} onClick={() => dispatch(removeItem(item.id))}>-</button>
+           <button className={'button1'} onClick={() => dispatch(removeItem(item))}>-</button>
         </div>
     );
 }
