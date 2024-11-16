@@ -6,7 +6,7 @@ import {useSelector } from 'react-redux';
 import '../App.css';
 import LogoutButton from "./logoutButton";
 import AddModal from "./AddModal";
-import {ModalProvider, useModal} from '../context/ModalContext';
+import {useModal} from '../context/ModalContext';
 
 export function Products(){
     let nomeBenv = "";

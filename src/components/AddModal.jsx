@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
-import {useModal} from '../context/ModalContext';
+import {useModal, open} from '../context/ModalContext';
 import {useDispatch, useSelector} from "react-redux";
 import {addItem} from "../redux/itemSlice";
+import AlertPopUp from "./AlertPopUp";
 import './style.css'
 import '../App.css';
 
 const AddModal = () => {
     const dispatch = useDispatch();
     const items = useSelector((state) => state.items.list);
-    const { closeModal } = useModal();
+    const { closeModal, openModal } = useModal();
     const [name, setName] = useState("");
     const [brand, setBrand] = useState("");
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({ name: false, brand: false, price: false });
-
     const handleValidation = () => {
         const newErrors = {
             name: name.trim() === "",
@@ -33,13 +33,12 @@ const AddModal = () => {
             return;
         }
 
-
-        // if (!newItem.id || !newItem.name || !newItem.price || !newItem.brand || newItem.price<0) {
-        //     return
-        // }
         const itemExists = items.some((element) => element.name === newItem.name);
         if (itemExists) {
-            console.log("item already exists");
+            closeModal()
+            setTimeout(() => {
+                openModal(<AlertPopUp errorMessage={"Nome già presente"} />);
+            }, 100);
         } else {
             dispatch(addItem(newItem));
         }
