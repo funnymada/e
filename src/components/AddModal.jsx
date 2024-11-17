@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useModal, open} from '../context/ModalContext';
+import {useModal} from '../context/ModalContext';
 import {useDispatch, useSelector} from "react-redux";
 import {addItem} from "../redux/itemSlice";
 import AlertPopUp from "./AlertPopUp";

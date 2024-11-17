@@ -5,16 +5,14 @@ import { Products } from "./components/Products";
 import { Detail } from "./pages/Detail";
 import Login from "./pages/Login";
 import {ModalProvider} from "./context/ModalContext";
-
+import Header from "./components/header/Header";
 function App() {
     return (
         <BrowserRouter>
             <ModalProvider>
-        <header className="App-header">
+                <Header />
+                <header className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
-            <p>
-                e-commerce
-            </p>
             <div className="App">
                 <Routes>
                     <Route path="/" element={<Products />} />

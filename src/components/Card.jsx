@@ -23,12 +23,14 @@ function Card({item}) {
 }
 const styles = {
     cardContainer: {
-        justifyContent: 'center',
+        backgroundColor: '#3c3939',
         borderRadius: '15%',
         borderStyle: 'solid',
         borderColor: 'black',
         borderWidth: 3,
         marginTop: 20,
+        marginRight: 50,
+        marginLeft: 50,
         width: 300
     },
     element: {
