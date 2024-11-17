@@ -1,13 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Card from './Card';
 import { selectUser } from '../redux/authslice';
 import {useNavigate} from "react-router-dom";
 import {useSelector } from 'react-redux';
 import '../App.css';
-import {useModal} from '../context/ModalContext';
 
 export function Products(){
-    let nomeBenv = "";
+    const [nomeBenv, setNomeBenv] = useState("");
     const items = useSelector((state) => state.items.list);
     const navigate = useNavigate();
     const user = useSelector(selectUser);
@@ -15,7 +14,8 @@ export function Products(){
         if (!user) {
             navigate('/Login');
         }else{
-        nomeBenv = user.username;
+            setNomeBenv(user.username);
+            console.log(nomeBenv)
         }
     }, [user, navigate]);
 
