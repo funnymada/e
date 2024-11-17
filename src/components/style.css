@@ -23,7 +23,7 @@
     appearance: textfield;
     &::-webkit-inner-spin-button {
         opacity: 1;
-        background: #c59e06;
+        background-color: #eaa000;
     }
 }
 input[type="number"]::-webkit-outer-spin-button,

@@ -4,6 +4,7 @@ import { selectUser } from '../redux/authslice';
 import {useNavigate} from "react-router-dom";
 import {useSelector } from 'react-redux';
 import '../App.css';
+import ButtonCart from "./ButtonCart";
 
 export function Products(){
     const [nomeBenv, setNomeBenv] = useState("");
@@ -27,6 +28,7 @@ export function Products(){
                     <Card key={item.id+item.name} item={item}/>
                 ))}
             </div>
+            <ButtonCart />
         </div>
     );
 }

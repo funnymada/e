@@ -6,6 +6,7 @@ import { Detail } from "./pages/Detail";
 import Login from "./pages/Login";
 import {ModalProvider} from "./context/ModalContext";
 import Header from "./components/header/Header";
+import Cart from "./pages/Cart";
 function App() {
     return (
         <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/" element={<Products />} />
                     <Route path="/Detail/:id" element={<Detail />} />
                     <Route path="/Login" element={<Login />} />
+                    <Route path="/Cart" element={<Cart />} />
                 </Routes>
             </div>
         </header>
