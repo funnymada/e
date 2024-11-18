@@ -9,6 +9,18 @@
          padding: .4em;
          color: #000000;
      }
+.inputAddLink {
+    margin-left: 6%;
+    appearance: none;
+    border: none;
+    outline: none;
+    width: 50%;
+    border-bottom: .2em solid #dfbb61;
+    background: rgba(69, 52, 10, 0.2);
+    border-radius: .2em .2em 0 0;
+    padding: .4em;
+    color: #000000;
+}
 .inputAddNumber {
     margin-left: 10px;
     place-content: center;
@@ -35,3 +47,23 @@ input[type="number"]::-webkit-inner-spin-button {
     display: flex;
     justify-content: center;
 }
+.hourglass{
+    animation: hourglass 1.6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+    @keyframes hourglass {
+        0% {
+            transform: rotateX(0deg);
+        }
+        50% {
+            transform: rotateX(180deg);
+        }
+        70% {
+            transform: rotateX(180deg);
+        }
+        100% {
+            transform: rotateX(0deg);
+        }
+    }
+

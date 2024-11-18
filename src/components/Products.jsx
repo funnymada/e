@@ -3,9 +3,9 @@ import Card from './Card';
 import { selectUser } from '../redux/authslice';
 import {useNavigate} from "react-router-dom";
 import {useSelector } from 'react-redux';
-import '../App.css';
 import ButtonCart from "./ButtonCart";
-
+import './style.css'
+import '../App.css';
 
 
 export function Products(){

@@ -4,6 +4,8 @@ import {addCartItem} from "../redux/cartSlice";
 import {useDispatch} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
+import './style.css'
+import '../App.css';
 
 const AddToCartModal = ({item}) => {
     const { closeModal } = useModal();
@@ -16,6 +18,7 @@ const AddToCartModal = ({item}) => {
             name: item.name,
             brand: item.brand,
             price: item.price,
+            url: item.url,
             qta: qta
         };
             dispatch(addCartItem(newItem));

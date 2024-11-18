@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useModal } from '../context/ModalContext';
 
-const AlertPopUp = ({ errorMessage }, {status}) => {
+const AlertPopUp = ({ errorMessage, status}) => {
     const { closeModal } = useModal();
     const divRef = useRef(null);
     const color = status === 'successful' ? 'green' : status === 'danger' ? 'red' : 'defaultColor';

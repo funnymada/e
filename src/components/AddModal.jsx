@@ -5,6 +5,8 @@ import {addItem} from "../redux/itemSlice";
 import AlertPopUp from "./AlertPopUp";
 import './style.css'
 import '../App.css';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faLink} from "@fortawesome/free-solid-svg-icons";
 
 const AddModal = () => {
     const dispatch = useDispatch();
@@ -12,21 +14,23 @@ const AddModal = () => {
     const { closeModal, openModal } = useModal();
     const [name, setName] = useState("");
     const [brand, setBrand] = useState("");
+    const [url, setUrl] = useState("");
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({ name: false, brand: false, price: false });
     const handleValidation = () => {
         const newErrors = {
             name: name.trim() === "",
             brand: brand.trim() === "",
-            price: price <= 0
+            price: price <= 0,
+            url: url.trim() === ""
         };
         setErrors(newErrors);
-        return newErrors.name || newErrors.brand || newErrors.price;
+        return newErrors.name || newErrors.brand || newErrors.price || newErrors.url;
     };
 
     const handleAddItem = (e) => {
         e.preventDefault();
-        const newItem = { id: Date.now(), name, brand, price };
+        const newItem = { id: Date.now(), name, brand, price, url};
 
         const hasErrors = handleValidation();
         if (hasErrors) {
@@ -52,18 +56,24 @@ const AddModal = () => {
                 <form>
                     <label>
                         Name:
-                        <input className={'inputAddText'} style={{ borderColor: errors.name ? 'red' : '' }} type="text"
+                        <input className={'inputAddText'} style={{borderColor: errors.name ? 'red' : ''}} type="text"
                                name="name" onChange={e => setName(e.target.value)}/>
                     </label><br/><br/>
                     <label>
                         Price:
-                        <input  className={'inputAddNumber'} style={{ borderColor: errors.price ? 'red' : '' }} type="number"
-                                name="price" onChange={e => setPrice(parseFloat(e.target.value) || 0)}/> €
+                        <input className={'inputAddNumber'} style={{borderColor: errors.price ? 'red' : ''}}
+                               type="number"
+                               name="price" onChange={e => setPrice(parseFloat(e.target.value) || 0)}/> €
                     </label><br/><br/>
                     <label>
                         Brand:
-                        <input className={'inputAddText'} style={{ borderColor: errors.brand ? 'red' : '' }} type="text"
+                        <input className={'inputAddText'} style={{borderColor: errors.brand ? 'red' : ''}} type="text"
                                name="brand" onChange={e => setBrand(e.target.value)}/>
+                    </label><br/><br/>
+                    <label >
+                        <FontAwesomeIcon icon={faLink}/>
+                        <input className={'inputAddLink'} style={{borderColor: errors.brand ? 'red' : ''}} type="text"
+                               name="url" onChange={e => setUrl(e.target.value)}/>
                     </label><br/><br/>
                 </form>
                 <div className="centeredButton">

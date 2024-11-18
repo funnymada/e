@@ -3,8 +3,7 @@
 }
 
 .App-logo {
-  margin-top: -150px;
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 .button1 {
@@ -89,7 +88,20 @@
   background-color: rgba(234, 160, 0, 0.58);
   color: black;
 }
+.imageCard {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
 
+.imageCard:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
