@@ -52,7 +52,7 @@ const Login = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit" disabled={loading}>
+                <button type="submit" disabled={loading} className={'button2'}>
                     {loading ? 'Loading...' : 'Login'}
                 </button>
             </form>
