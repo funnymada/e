@@ -53,6 +53,43 @@
   padding: 20px;
 }
 
+.buttonTp {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.buttonAddCart {
+  border-style: solid;
+  border-radius: 50%;
+  border-color: black;
+  background-color: #eaa000;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: 10%;
+}
+
+.buyNowButton{
+  position: fixed;
+  color: #eaa000;
+  font-style: oblique;
+  bottom: 20px;
+  right: 20px;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #eaa000;
+  border-radius: 15px;
+  padding: 10px;
+  z-index: 1000;
+  cursor: pointer;
+}
+.buyNowButton:hover{
+  background-color: rgba(234, 160, 0, 0.58);
+  color: black;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

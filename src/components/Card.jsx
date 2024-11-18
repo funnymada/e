@@ -4,6 +4,9 @@ import '../App.css';
 import './style.css'
 import {removeItem} from "../redux/itemSlice";
 import {useDispatch} from "react-redux";
+import {faCartShopping} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
 function Card({item}) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -17,7 +20,10 @@ function Card({item}) {
                 <p> Prezzo:   {item.price} €</p>
                 <p> Brand: {item.brand}</p>
             </div>
-           <button className={'button1'} onClick={() => dispatch(removeItem(item))}>-</button>
+            <div>
+                <button className={'button1'} onClick={() => dispatch(removeItem(item))}>-</button>
+                <button className={'buttonAddCart'}><FontAwesomeIcon icon={faCartShopping} size={'xs'}/></button>
+            </div>
         </div>
     );
 }

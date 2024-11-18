@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom";
 import {useSelector } from 'react-redux';
 import '../App.css';
 import ButtonCart from "./ButtonCart";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export function Products(){
     const [nomeBenv, setNomeBenv] = useState("");

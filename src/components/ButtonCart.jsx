@@ -10,7 +10,7 @@ const ButtonCart = () => {
     };
     return (
         <div style={styles.ButtonContainer} onClick={() => handleCart()}>
-            <button style={styles.ButtonTp}><FontAwesomeIcon size={'2x'} icon={faCartShopping}/></button>
+            <button className="buttonTp"><FontAwesomeIcon size={'2x'} icon={faCartShopping}/></button>
         </div>
     )
 
@@ -26,12 +26,6 @@ const styles = {
         padding: '10px',
         zIndex: 1000,
         cursor: 'pointer'
-    },
-    ButtonTp: {
-        background: 'transparent',
-        border: 'none',
-        cursor: 'pointer',
-        padding: '5px'
     }
 }
 
