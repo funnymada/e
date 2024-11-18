@@ -6,12 +6,18 @@ import {removeItem} from "../redux/itemSlice";
 import {useDispatch} from "react-redux";
 import {faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import AddToCartModal from "./AddToCartModal";
+import { useModal } from "../context/ModalContext";
 
 function Card({item}) {
     const navigate = useNavigate();
+    const { openModal } = useModal();
     const dispatch = useDispatch();
     const handleCardClick = (id) => {
         navigate(`/Detail/${id}`);
+    };
+    const handleOpenModal = (item) => {
+        openModal(<AddToCartModal item={item} />);
     };
     return (
         <div style={styles.cardContainer} >
@@ -22,7 +28,7 @@ function Card({item}) {
             </div>
             <div>
                 <button className={'button1'} onClick={() => dispatch(removeItem(item))}>-</button>
-                <button className={'buttonAddCart'}><FontAwesomeIcon icon={faCartShopping} size={'xs'}/></button>
+                <button className={'buttonAddCart'} onClick={() => handleOpenModal(item)}><FontAwesomeIcon icon={faCartShopping} size={'xs'}/></button>
             </div>
         </div>
     );
