@@ -37,7 +37,7 @@ const AddModal = () => {
         if (itemExists) {
             closeModal()
             setTimeout(() => {
-                openModal(<AlertPopUp errorMessage={"Nome già presente"} />);
+                openModal(<AlertPopUp errorMessage={"Nome già presente"} status={"danger"} />);
             }, 100);
         } else {
             dispatch(addItem(newItem));

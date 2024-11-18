@@ -3,14 +3,20 @@ import {clearCartItems} from "../redux/cartSlice";
 import {useDispatch, useSelector} from "react-redux";
 import '../App.css'
 import CartCard  from "../components/CartCard";
+import {useModal} from '../context/ModalContext';
+import AlertPopUp from "../components/AlertPopUp";
+
 const Cart = () => {
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.list);
-
+    const { openModal } = useModal();
     const totalPrice = () => {
         return cartItems.reduce((total, item) => total + (item.price*item.qta), 0);
     }
-    console.log(totalPrice())
+    const handleBuyNow = () => {
+        dispatch(clearCartItems())
+        openModal(<AlertPopUp errorMessage={"Complimenti! acquisto avvenuto, hai speso " + totalPrice() + " €"} status={"successful"} />);
+    }
     return (
         <div style={styles.pageContainer}>
             <div style={styles.cardsSection}>
@@ -18,7 +24,7 @@ const Cart = () => {
                     <CartCard key={item.id + item.name} item={item}/>
                 ))}
             </div>
-            <button className={'buyNowButton'} onClick={() => dispatch(clearCartItems())}>Buy Now!</button>
+            <button className={'buyNowButton'} onClick={() => handleBuyNow()}>Buy Now!</button>
         </div>
     )
 }
