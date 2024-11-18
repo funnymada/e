@@ -18,34 +18,55 @@ const Cart = () => {
         openModal(<AlertPopUp errorMessage={"Complimenti! acquisto avvenuto, hai speso " + totalPrice() + " €"} status={"successful"} />);
     }
     return (
-        <div style={styles.pageContainer}>
-            <div style={styles.cardsSection}>
-                {cartItems.map((item) => (
-                    <CartCard key={item.id + item.name} item={item}/>
-                ))}
+        <div style={styles.pageBorder}>
+            <h1 style={styles.element}>Cart</h1>
+             <div style={styles.pageContainer}>
+                <div>
+
+                    <div style={styles.cardsSection}>
+                        {cartItems.map((item) => (
+                            <CartCard key={item.id + item.name} item={item}/>
+                        ))}
+                    </div>
+                </div>
+                <div style={styles.rightSection}>
+                    <h2>Total price</h2>
+                    <h1>{totalPrice()} €</h1>
+                </div>
+                <button className={'buyNowButton'} onClick={() => handleBuyNow()}>Buy Now!</button>
             </div>
-            <button className={'buyNowButton'} onClick={() => handleBuyNow()}>Buy Now!</button>
         </div>
     )
 }
 
 const styles = {
+    pageBorder: {
+        width: '100%',
+    },
     pageContainer: {
+        flexDirection: 'row',
         display: 'flex',
         gap: '20px',
-        padding: '20px',
+        padding: '5%'
     },
     cardsSection: {
         display: 'flex',
         flexDirection: 'column',
         gap: '15px',
-        width: '250px',
+        width: '180%',
+        marginRight: '10%',
     },
     rightSection: {
-        flex: 1,
-        backgroundColor: '#f0f0f0',
+        marginLeft: '40%',
+        width: '180%',
         borderRadius: '10px',
         padding: '20px',
-    }
+
+    },
+    element: {
+        marginLeft: '5px',
+        marginRight: '5px',
+        alignItems: 'center',
+    },
 }
 export default Cart

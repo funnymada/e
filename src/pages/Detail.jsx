@@ -4,24 +4,31 @@ import {useSelector} from "react-redux";
 import {selectUser} from "../redux/authslice";
 import ButtonCart from "../components/ButtonCart";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHourglass} from "@fortawesome/free-solid-svg-icons";
+import {faCartShopping, faHourglass} from "@fortawesome/free-solid-svg-icons";
 import '../components/style.css'
 import '../App.css';
+import AddToCartModal from "../components/AddToCartModal";
+import {useModal} from "../context/ModalContext";
 
 export function Detail() {
     const {id} = useParams();
     const items = useSelector((state) => state.items.list);
     const navigate = useNavigate();
     const user = useSelector(selectUser);
-    const [item, setItem] = useState(null);
+    const {openModal} = useModal();
+    const [currentItem, setCurrentItem] = useState(null);
     const [loading, setLoading] = useState(true);
+    console.log(id)
     useEffect(() => {
         if (!user) {
             navigate('/Login');
         }
     }, [user, navigate]);
     useEffect(() => {
-        setItem(items.find(item => item.id === item.id));
+        const item = items.find((i) => {
+            return id === String(i.id)
+        })
+        setCurrentItem(item);
         const timer = setTimeout(() => {
             setLoading(false);
         }, 1000);
@@ -32,6 +39,9 @@ export function Detail() {
     const handleBack = (id) => {
         navigate(`/`);
     };
+    const handleOpenModal = (item) => {
+        openModal(<AddToCartModal item={item} />);
+    };
     if (loading) {
         return <p><FontAwesomeIcon
             className={'hourglass'}
@@ -40,18 +50,19 @@ export function Detail() {
             color={'#eaa000'}
         /></p>;
     }
-    if (!item) {
+    if (!currentItem) {
         return <p>Prodotto non trovato</p>;
     }
     return (
-
-        <div>
+        <div className={'cardContainer'}>
             <div>
-                <h1 style={{marginTop: '-5%'}}> {item.name} </h1>
+                <h1 style={{marginTop: '-5%'}}> {currentItem.name} </h1>
                 <p>prodotto numero: {id}</p>
-                <img className={'imageCard'} src={item.url} alt={item.name}/>
-                <div >
+                <img className={'imageCard'} src={currentItem.url} alt={currentItem.name}/>
+                <div>
                     <button onClick={() => handleBack()} style={styles.button}>back</button>
+                    <button className={'buttonAddCart'} onClick={() => handleOpenModal(currentItem)}><FontAwesomeIcon
+                        icon={faCartShopping} size={'xs'}/></button>
                 </div>
             </div>
             <ButtonCart/>

@@ -4,7 +4,7 @@ import '../App.css';
 import './style.css'
 import {removeItem} from "../redux/itemSlice";
 import {useDispatch} from "react-redux";
-import {faCartShopping} from "@fortawesome/free-solid-svg-icons";
+import {faCartShopping, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import AddToCartModal from "./AddToCartModal";
 import { useModal } from "../context/ModalContext";
@@ -13,21 +13,25 @@ function Card({item}) {
     const navigate = useNavigate();
     const { openModal } = useModal();
     const dispatch = useDispatch();
-    const handleCardClick = (id) => {
-        navigate(`/Detail/${id}`);
+    const handleCardClick = (e, id) => {
+        e.preventDefault();
+        navigate(`/Detail/${item.id}`);
     };
     const handleOpenModal = (item) => {
         openModal(<AddToCartModal item={item} />);
     };
     return (
         <div style={styles.cardContainer} >
-            <div onClick={() => handleCardClick(item.id)}>
+            <div onClick={(e) => handleCardClick(e,item.id)}>
                 <h2 style={styles.element}>Nome: {item.name}</h2>
                 <p> Prezzo:   {item.price} €</p>
                 <p> Brand: {item.brand}</p>
             </div>
             <div>
-                <button className={'button1'} onClick={() => dispatch(removeItem(item))}>-</button>
+                <button className={'button1'} onClick={() => dispatch(removeItem(item))}>
+                    <FontAwesomeIcon
+                        icon={faTrash} size={'xs'} />
+                </button>
                 <button className={'buttonAddCart'} onClick={() => handleOpenModal(item)}><FontAwesomeIcon icon={faCartShopping} size={'xs'}/></button>
             </div>
         </div>

@@ -26,9 +26,9 @@ export function Products(){
         <div className="app">
             benvenuto {nomeBenv} <br/>
             <div className="cardContainer">
-                {items.map((item) => (
-                    <Card key={item.id+item.name} item={item}/>
-                ))}
+                {items.map((item) => {
+                    return <Card key={item.id} item={item} />;
+                })}
             </div>
             <ButtonCart />
         </div>

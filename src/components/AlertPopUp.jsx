@@ -5,7 +5,6 @@ const AlertPopUp = ({ errorMessage, status}) => {
     const { closeModal } = useModal();
     const divRef = useRef(null);
     const color = status === 'successful' ? 'green' : status === 'danger' ? 'red' : 'defaultColor';
-    console.log(color)
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (divRef.current && !divRef.current.contains(event.target)) {

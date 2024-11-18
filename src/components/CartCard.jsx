@@ -3,17 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeCartItem, incrementCartQta, decrementCartQta } from "../redux/cartSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faMinus, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faMinus, faPlus, faCheck, faTrash} from '@fortawesome/free-solid-svg-icons';
+import {useModal} from '../context/ModalContext';
+import AlertPopUp from "../components/AlertPopUp";
 
 const CardCart = ({ item }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { openModal } = useModal();
 
     const handleCardClick = (id) => {
         navigate(`/Detail/${id}`);
     };
 
     const handleRemoveItem = () => {
+        dispatch(removeCartItem(item.id));
+    };
+    const handleBuyItem = () => {
+        openModal(<AlertPopUp errorMessage={"Complimenti! acquisto avvenuto, hai speso " + item.qta*item.price + " €"} status={"successful"} />);
         dispatch(removeCartItem(item.id));
     };
     return (
@@ -36,7 +43,14 @@ const CardCart = ({ item }) => {
                     onClick={() => dispatch(decrementCartQta(item))}
                 />
             </div>
-                <button className="button1" onClick={() => handleRemoveItem()}>-</button>
+                <button className="button1" onClick={() => handleRemoveItem()}>
+                    <FontAwesomeIcon
+                    icon={faTrash} size={'xs'} />
+                    </button>
+                <button className={'buttonAddCart'}><FontAwesomeIcon
+                    icon={faCheck}
+                    onClick={() => handleBuyItem()}
+                /></button>
         </div>
     );
 };
